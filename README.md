@@ -2,7 +2,7 @@
 
 Projeto profissional de analise de dados para uma sorveteria, com foco em vendas de 2025, aumento de receita, geracao de KPIs, dashboard executivo em Power BI e storytelling de negocio.
 
-> Status: estrutura inicial e documentacao preparadas. Nenhuma analise foi executada nesta etapa.
+> Status: camada analitica tratada e documentada, pronta para consumo em analises, KPIs e Power BI.
 
 ## Objetivo
 
@@ -66,6 +66,21 @@ Documento de referencia:
 - `docs/case_sorveteria.pptx`
 
 Os arquivos originais nao devem ser alterados. Qualquer transformacao deve gerar novos arquivos em `data/interim` ou `data/processed`.
+
+## Base Analitica Atual
+
+Arquivo principal para analises e Power BI:
+
+- `data/processed/vendas_sorvetes_tratado.csv`
+
+Resumo da camada processada:
+
+- 48.491 registros validos;
+- 31 colunas;
+- 0 nulos finais;
+- 0 duplicidades em `id_transacao`;
+- `mes` e `hora` mantidos como nomes aprovados;
+- principais campos de metricas: `receita_transacao`, `quantidade_vendida`, `valor_transacao` e `valor_unitario_medio`.
 
 ## Ambiente
 

@@ -39,6 +39,16 @@ COLUMN_MAP = {
     "Promocao": "promocao",
     "ID_Cliente": "id_cliente",
 }
+PROCESSED_RENAME_MAP = {
+    "faixa_horario": "faixa_horaria",
+    "quantidade": "quantidade_vendida",
+    "valor_total": "receita_transacao",
+    "ticket_transacao": "valor_transacao",
+    "ticket_medio": "valor_unitario_medio",
+    "promocao_label": "status_promocao",
+    "qtd_transacoes_cliente": "quantidade_transacoes_cliente",
+    "registro_valido_powerbi": "flag_registro_valido_powerbi",
+}
 
 TEXT_COLUMNS = ["tipo_sorvete", "sabor", "cidade", "estado", "canal_venda", "id_cliente"]
 MONTH_NAMES = {
@@ -293,13 +303,14 @@ def prepare_processed_dataset(df: pd.DataFrame) -> pd.DataFrame:
     ]
 
     processed = df.loc[df["registro_valido_powerbi"], processed_columns].copy()
+    processed = processed.rename(columns=PROCESSED_RENAME_MAP)
     processed["data_venda"] = processed["data_venda"].dt.strftime("%Y-%m-%d")
-    processed["quantidade"] = processed["quantidade"].astype(int)
+    processed["quantidade_vendida"] = processed["quantidade_vendida"].astype(int)
     processed["hora"] = processed["hora"].astype(int)
     processed["ano"] = processed["ano"].astype(int)
     processed["mes"] = processed["mes"].astype(int)
     processed["dia_mes"] = processed["dia_mes"].astype(int)
-    processed["qtd_transacoes_cliente"] = processed["qtd_transacoes_cliente"].astype(int)
+    processed["quantidade_transacoes_cliente"] = processed["quantidade_transacoes_cliente"].astype(int)
     return processed
 
 
