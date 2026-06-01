@@ -82,6 +82,10 @@ Resumo da camada processada:
 - `mes` e `hora` mantidos como nomes aprovados;
 - principais campos de metricas: `receita_transacao`, `quantidade_vendida`, `valor_transacao` e `valor_unitario_medio`.
 
+## Dashboard Power BI
+
+O dashboard Power BI final foi ajustado manualmente no Power BI e esta organizado em duas paginas: `Visao Executiva` e `Visao Operacional`. A documentacao dos visuais, metricas, decisoes de layout, cores e alteracoes manuais esta em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md).
+
 ## Ambiente
 
 Criar e ativar o ambiente virtual no Windows:
