@@ -5,6 +5,7 @@ Pasta para briefing, premissas, regras de negocio, dicionario de dados e materia
 ## Arquivos
 
 - `case_sorveteria.pptx`: documento de referencia do case.
+- `apresentacao_case_sorveteria.md`: apresentacao em Markdown/Marp para portfolio e entrevistas de BI/Analytics.
 - `PROJECT_BRIEF.md`: contexto e escopo inicial do projeto.
 - `dicionario_dados_inicial.md`: dicionario preliminar criado a partir da exploracao inicial.
 - `dicionario_dados_processado.md`: dicionario da base final tratada para Power BI e KPIs.

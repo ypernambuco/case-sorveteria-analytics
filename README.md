@@ -88,6 +88,10 @@ O dashboard Power BI final foi ajustado manualmente no Power BI e esta organizad
 
 Observacao importante: durante a validacao foi identificada uma reducao abrupta de registros a partir de 22/08/2025, ja presente no dataset bruto original. A limitacao e seu impacto nos indicadores temporais estao documentados em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md#limitacao-identificada-na-base-de-dados).
 
+## Apresentacao Do Case
+
+A apresentacao em formato Markdown/Marp para portfolio e entrevistas esta disponivel em [`docs/apresentacao_case_sorveteria.md`](docs/apresentacao_case_sorveteria.md).
+
 ## Ambiente
 
 Criar e ativar o ambiente virtual no Windows:
