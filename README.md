@@ -1,19 +1,20 @@
 # Case Sorveteria Analytics
 
-Projeto profissional de analise de dados para uma sorveteria, com foco em vendas de 2025, aumento de receita, geracao de KPIs, dashboard executivo em Power BI e storytelling de negocio.
+Case completo de BI com 50.000 registros, tratamento com Python, modelagem para Power BI, dashboard executivo/operacional e investigacao de anomalia real na fonte de dados.
 
-> Status: camada analitica tratada e documentada, pronta para consumo em analises, KPIs e Power BI.
+> Status: projeto finalizado, com base tratada, KPIs documentados, modelo dimensional, dashboard Power BI, apresentacao do case e documentacao tecnica.
 
 ## Objetivo
 
-Organizar uma base de vendas de sorvetes ainda nao tratada para apoiar uma jornada completa de analytics:
+Organizar uma base de vendas de sorvetes para apoiar uma jornada completa de analytics:
 
 - entendimento do problema de negocio;
 - analise exploratoria dos dados;
 - tratamento e validacao da base;
 - construcao de indicadores de desempenho;
-- desenvolvimento de dashboard executivo;
-- criacao de apresentacao com recomendacoes de negocio.
+- modelagem dimensional para Power BI;
+- desenvolvimento de dashboards executivo e operacional;
+- documentacao das descobertas, decisoes tecnicas e limitacoes dos dados.
 
 ## Pergunta De Negocio
 
@@ -86,7 +87,7 @@ Resumo da camada processada:
 
 O dashboard Power BI final foi ajustado manualmente no Power BI e esta organizado em duas paginas: `Visao Executiva` e `Visao Operacional`. A documentacao dos visuais, metricas, decisoes de layout, cores e alteracoes manuais esta em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md).
 
-Observacao importante: durante a validacao foi identificada uma reducao abrupta de registros a partir de 22/08/2025, ja presente no dataset bruto original. A limitacao e seu impacto nos indicadores temporais estao documentados em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md#limitacao-identificada-na-base-de-dados).
+Durante a validacao foi identificada uma reducao abrupta de registros a partir de 22/08/2025. A investigacao confirmou que a queda ja existia no dataset bruto original e nao foi causada por limpeza, transformacao, modelagem ou construcao do dashboard. Por isso, nenhum valor foi imputado artificialmente; a limitacao e seu impacto nos indicadores temporais estao documentados em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md#limitacao-identificada-na-base-de-dados).
 
 ## Apresentacao Do Case
 
@@ -112,31 +113,34 @@ Bibliotecas iniciais:
 - `jupyter`
 - `openpyxl`
 
-## Fluxo De Trabalho Sugerido
+## Fluxo De Trabalho Executado
 
-1. Registrar premissas e contexto do case em `docs/`.
-2. Criar uma exploracao inicial em `notebooks/`, lendo apenas `data/raw/vendas_sorvetes.csv`.
-3. Avaliar estrutura, tipos de dados, nulos, duplicidades e consistencia dos campos.
-4. Salvar bases intermediarias em `data/interim`.
-5. Gerar base tratada final em `data/processed`.
-6. Definir KPIs e regras de negocio em `docs/`.
-7. Construir dashboard executivo em `powerbi`.
-8. Exportar graficos e tabelas relevantes em `exports`.
-9. Consolidar storytelling e recomendacoes em `presentation`.
+1. Registro de premissas e contexto do case em `docs/`.
+2. Exploracao inicial da base bruta em `notebooks/`.
+3. Avaliacao de estrutura, tipos de dados, nulos, duplicidades e consistencia.
+4. Tratamento e auditoria de registros em `data/interim`.
+5. Geracao da base tratada em `data/processed`.
+6. Criacao da camada dimensional em `data/powerbi`.
+7. Definicao e documentacao dos KPIs executivos.
+8. Construcao do dashboard Power BI com visao executiva e operacional.
+9. Investigacao e documentacao da anomalia de registros apos 22/08/2025.
+10. Criacao da apresentacao do case para portfolio e entrevistas.
 
-## KPIs Planejados
+## KPIs Entregues
 
-Os KPIs serao definidos apos a exploracao e validacao dos dados. Possiveis indicadores:
+Os principais indicadores entregues no dashboard e na documentacao sao:
 
 - receita total;
+- total de vendas;
 - ticket medio;
-- quantidade vendida;
-- margem ou lucro, se houver dados disponiveis;
-- receita por produto;
+- clientes unicos;
+- volume vendido;
 - receita por canal;
-- sazonalidade mensal;
-- ranking de sabores/produtos;
-- desempenho por loja, regiao ou vendedor, se houver esses campos.
+- receita por tipo de sorvete;
+- vendas por dia da semana;
+- receita por faixa horaria;
+- receita por trimestre;
+- evolucao do volume vendido.
 
 ## Regras De Governanca
 
@@ -147,10 +151,11 @@ Os KPIs serao definidos apos a exploracao e validacao dos dados. Possiveis indic
 - Transformacoes recorrentes devem migrar de notebooks para `scripts`.
 - Exportacoes finais devem ficar em `exports`.
 
-## Proximas Etapas
+## Evolucoes Futuras
 
-- Criar notebook de exploracao inicial.
-- Levantar dicionario de dados.
-- Identificar problemas de qualidade da base.
-- Planejar KPIs executivos.
-- Desenhar wireframe do dashboard em Power BI.
+- Carregar a base tratada em um banco SQL.
+- Automatizar o pipeline de atualizacao.
+- Criar testes automatizados de qualidade dos dados.
+- Publicar o relatorio no Power BI Service.
+- Adicionar alertas para anomalias de volume de registros.
+- Evoluir analises preditivas de demanda.
