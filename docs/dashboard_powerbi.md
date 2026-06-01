@@ -126,6 +126,43 @@ As cores foram usadas com criterio para reforcar a leitura sem poluir a tela, pr
 - Preservacao da estrutura geral ja aprovada.
 - Evitar excesso de cores, icones e elementos decorativos sem funcao analitica.
 
+## Limitacao Identificada na Base de Dados
+
+Durante a analise exploratoria e a validacao dos indicadores do dashboard, foi identificada uma reducao abrupta no volume de registros a partir de 22/08/2025.
+
+A investigacao foi realizada comparando:
+
+- o dataset tratado (`data/processed/vendas_sorvetes_tratado.csv`);
+- o dataset bruto original (`data/raw/vendas_sorvetes.csv`).
+
+A analise confirmou que a reducao de registros ja estava presente na fonte original dos dados e nao foi causada pelo processo de limpeza, transformacao ou modelagem realizado neste projeto.
+
+### Evidencias observadas
+
+Nos dias anteriores a 22/08/2025, o dataset apresentava aproximadamente 250 registros por dia. A partir dessa data, o volume passou para cerca de 10 a 30 registros diarios, representando uma reducao superior a 90%.
+
+Na validacao, o dataset bruto apresentou 251 registros em 21/08/2025 e 26 registros em 22/08/2025. O dataset tratado apresentou o mesmo comportamento, com 243 registros em 21/08/2025 e 25 registros em 22/08/2025.
+
+Como consequencia, indicadores temporais como:
+
+- Receita;
+- Volume Vendido;
+- Quantidade de Vendas;
+
+apresentam queda significativa apos essa data.
+
+### Decisao adotada
+
+Nenhum valor foi corrigido, estimado ou imputado artificialmente.
+
+Como nao existe informacao suficiente para reconstruir os registros ausentes de forma confiavel, optou-se por preservar os dados originais e documentar a limitacao identificada.
+
+### Impacto na analise
+
+Os resultados referentes ao periodo posterior a 22/08/2025 devem ser interpretados com cautela, pois podem nao representar o comportamento real da operacao.
+
+Essa decisao foi tomada para manter a integridade analitica do projeto e evitar a introducao de vieses decorrentes de preenchimentos artificiais dos dados.
+
 ## Observacao Sobre O Arquivo Power BI
 
 O arquivo `.pbix` foi ajustado manualmente no Power BI. Nenhuma alteracao automatica no arquivo Power BI deve ser inferida a partir deste documento.

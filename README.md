@@ -86,6 +86,8 @@ Resumo da camada processada:
 
 O dashboard Power BI final foi ajustado manualmente no Power BI e esta organizado em duas paginas: `Visao Executiva` e `Visao Operacional`. A documentacao dos visuais, metricas, decisoes de layout, cores e alteracoes manuais esta em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md).
 
+Observacao importante: durante a validacao foi identificada uma reducao abrupta de registros a partir de 22/08/2025, ja presente no dataset bruto original. A limitacao e seu impacto nos indicadores temporais estao documentados em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md#limitacao-identificada-na-base-de-dados).
+
 ## Ambiente
 
 Criar e ativar o ambiente virtual no Windows:

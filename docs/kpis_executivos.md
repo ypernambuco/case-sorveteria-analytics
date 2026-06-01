@@ -11,7 +11,7 @@ A sorveteria gerou R$ 1.366.105,34 de receita em 48.491 vendas validas, com 149.
 
 O principal motor de receita e o Milkshake, responsavel por 25,9% do faturamento, acima das demais categorias, que ficam muito proximas entre 18,5% e 18,7%. A operacao tambem apresenta forte recorrencia: 97,6% dos clientes fizeram mais de uma compra na base analisada, com media de 5,4 transacoes por cliente e intervalo mediano de 20 dias entre compras.
 
-O maior ponto de atencao executivo esta na queda de agosto. Considerando apenas meses completos, marco a julho sustentaram receita diaria proxima de R$ 7,2 mil a R$ 7,5 mil. Em agosto, a receita diaria caiu para R$ 5,2 mil, reducao de 30,7% contra julho. Setembro e fevereiro sao meses parciais na base e devem ser tratados com cautela em comparacoes mensais.
+O maior ponto de atencao executivo esta na queda de agosto. Considerando apenas meses completos, marco a julho sustentaram receita diaria proxima de R$ 7,2 mil a R$ 7,5 mil. Em agosto, a receita diaria caiu para R$ 5,2 mil, reducao de 30,7% contra julho. A validacao posterior confirmou que a queda abrupta de registros a partir de 22/08/2025 ja estava presente no dataset bruto original, portanto o periodo posterior a essa data deve ser interpretado como limitacao da fonte de dados. Setembro e fevereiro sao meses parciais na base e devem ser tratados com cautela em comparacoes mensais.
 
 Outro sinal relevante esta nas promocoes. Vendas promocionais representam praticamente metade das transacoes, mas geram apenas 45,4% da receita. O ticket medio com promocao e R$ 25,55, contra R$ 30,80 sem promocao. Isso sugere que as promocoes estao reduzindo valor medio de compra sem evidenciar ganho proporcional de volume.
 
@@ -22,6 +22,7 @@ Outro sinal relevante esta nas promocoes. Vendas promocionais representam pratic
 - Transacoes foram calculadas por `id_transacao`, que e unico na base processada.
 - A base nao possui custo, margem ou CMV. Por isso, "produtos mais lucrativos" foi interpretado como produtos de maior geracao de receita, uma proxy comercial de lucratividade. Para margem real, seria necessario incluir custo unitario por produto.
 - Fevereiro e setembro sao meses parciais. Comparacoes de crescimento mensal devem priorizar os meses completos de marco a agosto.
+- A reducao abrupta de registros apos 22/08/2025 foi confirmada no dataset bruto original e nao foi causada pelo tratamento, modelagem ou dashboard. Nenhum valor foi imputado para recompor esse periodo.
 - A recorrencia foi analisada pelo comportamento observado na base final, usando transacoes por `id_cliente`.
 
 ## Numeros-Chave
@@ -42,10 +43,10 @@ Outro sinal relevante esta nas promocoes. Vendas promocionais representam pratic
 
 | KPI | Formula utilizada | Resultado observado | Significado | Importancia para o negocio | Possivel uso executivo | Possiveis insights gerados |
 |---|---|---:|---|---|---|---|
-| Receita total | `SUM(receita_transacao)` | R$ 1.366.105,34 | Soma de todo o faturamento validado no periodo. | Mede o tamanho economico da operacao e serve como indicador principal de performance comercial. | Definir metas mensais, avaliar expansao, priorizar investimentos e acompanhar crescimento. | A receita esta distribuida entre canais e categorias, mas ha queda relevante em agosto que exige investigacao. |
+| Receita total | `SUM(receita_transacao)` | R$ 1.366.105,34 | Soma de todo o faturamento validado no periodo. | Mede o tamanho economico da operacao e serve como indicador principal de performance comercial. | Definir metas mensais, avaliar expansao, priorizar investimentos e acompanhar crescimento. | A receita esta distribuida entre canais e categorias, mas ha queda relevante em agosto associada a limitacao de registros na fonte original. |
 | Ticket medio | `SUM(receita_transacao) / COUNT(id_transacao)` | R$ 28,17 | Valor medio gerado por venda. | Indica capacidade de capturar valor por pedido, independentemente do volume de clientes. | Criar metas de aumento de ticket por combos, adicionais, cross-sell e campanhas de recompra. | O ticket sem promocao e R$ 30,80, enquanto o promocional e R$ 25,55; ha perda de valor medio quando a promocao e aplicada. |
 | Receita por venda | `AVG(receita_transacao)`, com apoio de mediana e percentis | Media R$ 28,17; mediana R$ 25,64; P75 R$ 38,76 | Mostra a distribuicao de valor por transacao, nao apenas a media geral. | Ajuda a entender se a receita depende de muitas vendas pequenas ou de uma fatia de pedidos maiores. | Segmentar ofertas por faixa de gasto e desenhar beneficios para elevar clientes da mediana para o quartil superior. | A mediana abaixo da media indica presenca de vendas de maior valor puxando o resultado; ha espaco para aumentar pedidos medios com kits e adicionais. |
-| Crescimento mensal | `(Receita mes atual / Receita mes anterior) - 1` | Marco a agosto: media -5,3%; agosto -30,7% vs julho | Mede a evolucao temporal da receita. | Mostra se o negocio esta crescendo, estavel ou perdendo tracao. | Acompanhar metas mensais, planejar estoque, equipe e campanhas sazonais. | Marco a julho ficaram estaveis em torno de R$ 220 mil a R$ 233 mil; agosto rompeu o padrao e deve ser tratado como alerta. |
+| Crescimento mensal | `(Receita mes atual / Receita mes anterior) - 1` | Marco a agosto: media -5,3%; agosto -30,7% vs julho | Mede a evolucao temporal da receita. | Mostra se o negocio esta crescendo, estavel ou perdendo tracao. | Acompanhar metas mensais, planejar estoque, equipe e campanhas sazonais. | Marco a julho ficaram estaveis em torno de R$ 220 mil a R$ 233 mil; agosto rompeu o padrao, mas a leitura e limitada pela queda de registros na fonte apos 22/08/2025. |
 | Receita por canal | `SUM(receita_transacao)` por `canal_venda` | Parceiro R$ 459,3 mil; App R$ 454,1 mil; Loja Fisica R$ 452,7 mil | Mede a contribuicao financeira de cada canal. | Revela dependencia ou equilibrio entre canais de venda. | Alocar verba comercial, negociar com parceiros, priorizar UX do app e dimensionar loja fisica. | Os canais estao muito equilibrados, cada um com cerca de 33% da receita; a estrategia deve buscar rentabilidade por canal, nao apenas volume. |
 | Produtos mais lucrativos | `SUM(receita_transacao)` por `tipo_sorvete` e `sabor` | Milkshake: R$ 353,9 mil; top SKU: Milkshake de Acai, R$ 46,4 mil | Ranking de produtos por geracao de receita, usado como proxy de lucratividade. | Identifica produtos que sustentam faturamento e merecem prioridade comercial e operacional. | Definir mix, estoque, campanhas, destaque em cardapio e ofertas de alto valor. | Milkshake domina o ranking: os 8 principais sabores de Milkshake aparecem no topo por receita. |
 | Participacao percentual por categoria | `Receita da categoria / Receita total` | Milkshake 25,9%; demais categorias entre 18,5% e 18,7% | Mede o peso relativo de cada categoria no faturamento. | Ajuda a proteger categorias relevantes e identificar oportunidades de crescimento no mix. | Ajustar sortimento, precificacao e exposicao no app, loja e parceiros. | O mix e equilibrado, mas Milkshake tem papel de categoria ancora e pode ser usado como produto de atracao para combos. |
@@ -60,7 +61,7 @@ Outro sinal relevante esta nas promocoes. Vendas promocionais representam pratic
 | Maio | R$ 232.593,92 | 8.246 | R$ 7.503,03 | 5,3% | Melhor mes em receita, indicando pico de demanda ou execucao comercial mais forte. |
 | Junho | R$ 220.432,96 | 7.827 | R$ 7.347,77 | -5,2% | Recuo moderado, ainda dentro da faixa historica de estabilidade. |
 | Julho | R$ 232.592,11 | 8.167 | R$ 7.502,97 | 5,5% | Retomada ao patamar de maio, confirmando capacidade de operar acima de R$ 230 mil mensais. |
-| Agosto | R$ 161.166,63 | 5.714 | R$ 5.198,92 | -30,7% | Queda material, com impacto de volume e nao de ticket. Deve ser investigada como desvio operacional, comercial ou sazonal. |
+| Agosto | R$ 161.166,63 | 5.714 | R$ 5.198,92 | -30,7% | Queda material influenciada pela reducao abrupta de registros na fonte original a partir de 22/08/2025. |
 | Setembro | R$ 8.581,80 | 307 | R$ 429,09 | N/A | Mes parcial ate 20/09 e possivelmente incompleto em carga de dados. Nao usar para conclusao de performance. |
 
 ### Receita Por Canal
@@ -189,17 +190,17 @@ Leitura executiva: a promocao gera 63 vendas a mais que o grupo sem promocao, ma
 
 5. Promocoes nao estao gerando ganho proporcional de volume. O numero de vendas promocionais e quase igual ao de vendas sem promocao, mas o ticket promocional e 17,0% menor.
 
-6. Agosto apresenta ruptura de performance. A queda de 30,7% contra julho e muito superior as oscilacoes observadas entre marco e julho, sugerindo necessidade de investigacao especifica.
+6. Agosto apresenta ruptura de performance, mas a validacao confirmou limitacao de origem dos dados a partir de 22/08/2025. A queda de 30,7% contra julho deve ser interpretada com cautela, pois pode nao representar integralmente o comportamento real da operacao.
 
 ## Possiveis Gargalos
 
 | Gargalo | Evidencia nos dados | Impacto potencial | Acao recomendada |
 |---|---|---|---|
-| Queda de agosto | Receita diaria caiu de R$ 7.502,97 em julho para R$ 5.198,92 em agosto | Perda de tracao comercial e possivel subutilizacao operacional | Auditar campanhas, estoque, funcionamento dos canais, calendario local e possiveis falhas de captura de dados. |
+| Queda de agosto | Receita diaria caiu de R$ 7.502,97 em julho para R$ 5.198,92 em agosto; houve queda abrupta de registros na fonte original apos 22/08/2025 | Limitacao de confiabilidade para indicadores temporais apos essa data | Preservar os dados sem imputacao e interpretar o periodo posterior a 22/08/2025 com cautela. |
 | Promocoes com baixa eficiencia | Promocao tem 50,1% das vendas, mas apenas 45,4% da receita | Desconto pode estar reduzindo margem e receita por pedido | Trocar desconto direto por combos, beneficios progressivos e ofertas condicionadas a quantidade minima. |
 | Dependencia estrategica do Milkshake | Milkshake gera 25,9% da receita e lidera o ranking de produtos | Ruptura de insumo ou queda de demanda nessa categoria afetaria fortemente o faturamento | Garantir estoque, qualidade e comunicacao da categoria; testar extensoes de sabores e combos. |
 | Segunda-feira mais fraca | Segunda tem menor receita total, R$ 190,3 mil | Capacidade comercial menos explorada no inicio da semana | Criar campanhas de segunda com foco em recompra, sem reduzir excessivamente o ticket. |
-| Dados parciais em fevereiro e setembro | Periodo com inicio em 20/02 e fim em 20/09 | Risco de conclusoes incorretas sobre sazonalidade | Usar media diaria e marcar meses parciais nos dashboards. |
+| Dados parciais e queda de registros | Periodo com inicio em 20/02, reducao abrupta de registros apos 22/08 e fim em 20/09 | Risco de conclusoes incorretas sobre sazonalidade e tendencia temporal | Usar media diaria, marcar meses parciais e documentar a limitacao da fonte nos dashboards. |
 
 ## Decisoes Estrategicas Baseadas Nos Dados
 
@@ -207,7 +208,7 @@ Leitura executiva: a promocao gera 63 vendas a mais que o grupo sem promocao, ma
 
 2. Transformar Milkshake em categoria ancora. Como e o maior gerador de receita e o produto de maior penetracao entre clientes, deve receber destaque no app, materiais de loja, campanhas com parceiros e testes de novos sabores.
 
-3. Investigar imediatamente a queda de agosto. A diferenca de patamar e grande demais para ser tratada como variacao normal. A analise deve cruzar agosto por canal, produto, promocao, cidade e disponibilidade operacional.
+3. Interpretar a queda de agosto como limitacao de dados apos 22/08/2025. Como a reducao ja estava no dataset bruto original, a decisao analitica foi preservar os dados sem imputacao artificial e documentar o impacto nos indicadores temporais.
 
 4. Criar estrategia de CRM baseada no ciclo de recompra. Com intervalo mediano de 20 dias entre compras, campanhas entre o 15o e o 25o dia apos a ultima transacao podem aumentar frequencia sem depender de desconto generalizado.
 
@@ -233,4 +234,4 @@ Leitura executiva: a promocao gera 63 vendas a mais que o grupo sem promocao, ma
 
 A sorveteria tem uma base comercial saudavel, com receita relevante, canais equilibrados, alta recorrencia e uma categoria lider clara. O potencial de crescimento parece menos dependente de aquisicao de novos clientes e mais associado a tres frentes: elevar ticket medio, melhorar eficiencia promocional e explorar melhor o ciclo de recompra.
 
-O principal risco identificado e a queda abrupta de agosto, que precisa ser investigada antes de qualquer conclusao definitiva sobre sazonalidade. O principal ganho rapido esta na revisao das promocoes: os dados indicam que a empresa esta concedendo desconto em volume alto de vendas sem capturar aumento proporcional de demanda. Uma estrategia mais executiva seria migrar de desconto amplo para ofertas condicionadas a cesta maior, recorrencia e produtos de maior valor.
+O principal risco de interpretacao esta na queda abrupta de agosto. A investigacao confirmou que a reducao de registros apos 22/08/2025 ja estava presente na fonte original, por isso conclusoes sobre sazonalidade e tendencia apos essa data devem ser feitas com cautela. O principal ganho rapido esta na revisao das promocoes: os dados indicam que a empresa esta concedendo desconto em volume alto de vendas sem capturar aumento proporcional de demanda. Uma estrategia mais executiva seria migrar de desconto amplo para ofertas condicionadas a cesta maior, recorrencia e produtos de maior valor.
