@@ -8,7 +8,15 @@ O registro formal da versao final esta disponivel em [`CHANGELOG.md`](CHANGELOG.
 
 ## Prévia do Dashboard
 
-Os screenshots reais do dashboard Power BI serao adicionados futuramente, assim que as capturas finais estiverem disponiveis no repositorio.
+As capturas reais do dashboard Power BI estao disponiveis em `presentation/assets/` e foram integradas aos materiais da apresentacao.
+
+![Dashboard Executivo](presentation/assets/dashboard_executivo.png)
+
+*Visao executiva do dashboard, com KPIs principais, evolucao da receita e analises de apoio por canal, produto e dia da semana.*
+
+![Dashboard Operacional](presentation/assets/dashboard_operacional.png)
+
+*Visao operacional do dashboard, com foco em demanda, faixa horaria, volume, trimestre e comportamento semanal.*
 
 ## Objetivo
 
@@ -98,7 +106,7 @@ Durante a validacao foi identificada uma reducao abrupta de registros a partir d
 
 ## Apresentacao Do Case
 
-Os materiais da apresentacao executiva estao centralizados em `presentation/`, incluindo a estrutura narrativa e a versao Markdown/Marp do case.
+Os materiais da apresentacao executiva estao centralizados em `presentation/`, incluindo a estrutura narrativa, recomendacoes de negocio, capturas reais do dashboard e a versao Markdown/Marp do case em [`presentation/apresentacao_case_sorveteria.md`](presentation/apresentacao_case_sorveteria.md).
 
 ## Ambiente
 
