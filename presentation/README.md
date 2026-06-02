@@ -7,8 +7,8 @@ Pasta para materiais de storytelling e apresentacao final do Case Sorveteria Ana
 - `estrutura_narrativa.md`: roteiro narrativo da apresentacao, organizado como historia de negocio antes da criacao dos slides.
 - `apresentacao_case_sorveteria.md`: apresentacao em Markdown/Marp para portfolio e entrevistas de BI/Analytics.
 
-## Conteudos futuros
+## Status dos entregaveis
 
-- slides finais;
-- graficos exportados;
-- recomendacoes de negocio.
+- Estrutura narrativa: concluido.
+- Slides finais: concluido em formato Markdown/Marp, alinhado ao roteiro narrativo consolidado.
+- Graficos exportados: nao criados nesta etapa.

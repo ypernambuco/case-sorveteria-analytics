@@ -15,32 +15,36 @@ theme: default
 
 ---
 
-# Objetivo do Projeto
+# Contexto do Negocio
 
-Transformar uma base transacional de vendas em uma solucao analitica para tomada de decisao.
+A sorveteria precisava transformar uma base transacional em informacao gerencial para apoiar decisoes de crescimento.
 
-- Entender a qualidade dos dados
-- Preparar uma base confiavel
-- Criar KPIs executivos
-- Modelar dados para Power BI
-- Construir dashboards executivo e operacional
-- Documentar descobertas e limitacoes
+Pergunta central:
+
+**Como aumentar receita a partir do comportamento de vendas de 2025?**
+
+Dimensoes analisadas:
+
+- produtos e mix de vendas
+- canais comerciais
+- sazonalidade e horarios
+- comportamento de clientes
+- limitacoes da fonte de dados
 
 ---
 
-# Arquitetura do Projeto
+# Objetivo da Analise
 
-```text
-CSV bruto
-  -> EDA
-  -> Data Cleaning
-  -> CSV tratado
-  -> Modelagem Estrela
-  -> Power BI
-  -> Dashboards
-```
+Criar uma base confiavel e indicadores executivos para entender desempenho comercial, eficiencia operacional e oportunidades de crescimento.
 
-O fluxo preserva a fonte original e gera camadas derivadas para auditoria, analise e consumo em BI.
+Entregas analiticas:
+
+- entender a qualidade dos dados
+- preparar uma base confiavel
+- criar KPIs executivos
+- modelar dados para Power BI
+- construir dashboards executivo e operacional
+- documentar descobertas, decisoes e limitacoes
 
 ---
 
@@ -51,46 +55,67 @@ O fluxo preserva a fonte original e gera camadas derivadas para auditoria, anali
 - Registros removidos: **1.509**
 - Taxa de aproveitamento: **96,98%**
 - Periodo da base: **20/02/2025 a 20/09/2025**
+- Granularidade: **uma linha por transacao de venda**
 
-Os registros removidos permanecem auditaveis em `data/interim`.
-
----
-
-# Qualidade dos Dados
-
-Problemas tratados:
-
-- Valores nulos em campos relevantes
-- Valores monetarios nao positivos
-- Quantidade vendida nao positiva
-- Tipos de dados inadequados para analise
-- Padronizacao textual de categorias e localidades
-- Necessidade de flags de auditoria
-
-Resultado: base processada com **0 nulos finais** e **0 duplicidades em `id_transacao`**.
+Fonte bruta: `data/raw/vendas_sorvetes.csv`  
+Base tratada: `data/processed/vendas_sorvetes_tratado.csv`
 
 ---
 
-# Tratamento e Enriquecimento
+# Problemas Encontrados Nos Dados
 
-Colunas e informacoes criadas:
+A base original tinha problemas que poderiam distorcer receita, volume, ticket medio, filtros e leitura operacional.
 
-- `ano`, `mes`, `nome_mes`, `ano_mes`
-- `trimestre`
-- `dia_semana`, `dia_mes`
-- `hora`, `faixa_horaria`
-- `valor_unitario_medio`
-- `status_promocao`
-- `cliente_recorrente`
-- flags de qualidade e auditoria
+Principais pontos tratados:
 
-Essas variaveis viabilizam filtros, cortes temporais e leitura operacional no Power BI.
+- nulos em campos como `sabor`, `cidade` e `Valor_Total`
+- valores monetarios nao positivos
+- quantidade vendida nao positiva
+- inconsistencias textuais e espacos extras
+- nomes de colunas pouco adequados para Power BI e DAX
+- outliers financeiros que exigiam rastreabilidade
+
+---
+
+# Processo de Tratamento
+
+O tratamento preservou a fonte original e separou as camadas de trabalho.
+
+```text
+Raw -> Interim -> Processed -> Power BI
+```
+
+Decisoes aplicadas:
+
+- arquivos em `data/raw` mantidos como fonte imutavel
+- registros removidos preservados em `data/interim`
+- nulos em `sabor` e `cidade` preenchidos como `Nao Informado`
+- flags criadas para manter rastreabilidade
+- valores e quantidades nao positivos removidos da base processada
+
+---
+
+# Qualidade dos Dados Apos Tratamento
+
+A base processada ficou consistente e pronta para analises, KPIs e Power BI.
+
+Resultados finais:
+
+- **48.491 registros validos** mantidos
+- **31 colunas** na base processada
+- **0 nulos finais**
+- **0 duplicidades em `id_transacao`**
+- **0 registros com `quantidade_vendida <= 0`**
+- **0 registros com `receita_transacao <= 0`**
+- **Data Quality Score: 99,25**
 
 ---
 
 # Modelagem Dimensional
 
-Modelo recomendado em estrela:
+O modelo foi organizado em estrela para reduzir ambiguidade e facilitar filtros, medidas e dashboards.
+
+Modelo recomendado:
 
 - `fato_vendas`
 - `dim_tempo`
@@ -98,12 +123,11 @@ Modelo recomendado em estrela:
 - `dim_clientes`
 - `dim_canais`
 
-Beneficios:
+Relacionamentos:
 
-- Separacao clara entre fatos e dimensoes
-- Melhor organizacao para Power BI
-- Relacionamentos simples
-- Menor risco de ambiguidade nas analises
+- dimensoes em relacao **1 para muitos** com `fato_vendas`
+- direcao de filtro simples
+- sem muitos-para-muitos nesta versao
 
 ---
 
@@ -111,21 +135,20 @@ Beneficios:
 
 Pagina voltada para leitura rapida da saude do negocio.
 
-KPIs principais:
+Elementos principais:
 
-- Receita Total
-- Total de Vendas
-- Ticket Medio
-- Clientes Unicos
-- Volume Vendido
+- filtros superiores: mes, canal de venda e tipo de sorvete
+- KPIs: Receita Total, Total de Vendas, Ticket Medio, Clientes Unicos e Volume Vendido
+- visual principal: **Evolucao da Receita**
+- graficos de apoio: Receita por Canal, Receita por Tipo de Sorvete e Vendas por Dia da Semana
 
-Visual principal: **Evolucao da Receita**.
+A pagina prioriza leitura executiva, clareza e poucos elementos visuais.
 
 ---
 
 # Dashboard Operacional
 
-Pagina voltada para rotina de operacao e demanda.
+Pagina voltada para rotina de operacao, demanda e sazonalidade.
 
 Visuais finais:
 
@@ -136,7 +159,7 @@ Visuais finais:
 - Receita por Dia da Semana
 - Evolucao do Volume Vendido
 
-O objetivo e responder perguntas diferentes sem repetir a mesma historia.
+O objetivo e responder perguntas operacionais sem repetir a mesma historia da visao executiva.
 
 ---
 
@@ -150,115 +173,59 @@ O objetivo e responder perguntas diferentes sem repetir a mesma historia.
 
 Insights documentados:
 
-- Categoria lider: **Milkshake**, com **25,9%** da receita
-- Melhor trimestre: **T2**, com **49,3%** da receita
-- Melhor dia: **Quinta-feira**, com **R$ 203,5 mil** e **7.215 vendas**
-- Faixa de maior volume: **Tarde**, com **39,9%** das vendas
+- Milkshake lidera com **25,9%** da receita
+- canais Parceiro, App e Loja Fisica ficam equilibrados em torno de um terco da receita
+- clientes recorrentes representam **97,6%** da base analisada
+- Tarde concentra **39,9%** das vendas
+- promocoes representam **50,1%** das vendas, mas apenas **45,4%** da receita
 
 ---
 
-# Anomalia Identificada
+# Investigacao da Anomalia pos-22/08/2025
 
-Durante a validacao do dashboard, foi identificada queda brusca apos **22/08/2025**.
-
-Impacto observado em:
-
-- Receita
-- Volume Vendido
-- Quantidade de Vendas
+Durante a validacao do dashboard, foi identificada queda brusca de registros apos **22/08/2025**.
 
 Evidencias:
 
 - Bruto: **251 registros em 21/08/2025** e **26 em 22/08/2025**
 - Tratado: **243 registros em 21/08/2025** e **25 em 22/08/2025**
 
----
-
-# Investigacao da Anomalia
-
-Raciocinio de validacao:
-
-```text
-Dashboard
-  -> dataset tratado
-  -> dataset bruto
-  -> comparacao por dia
-  -> conclusao
-```
-
 Conclusao:
 
 A anomalia ja existia na fonte original e nao foi causada por limpeza, transformacao, modelagem ou dashboard.
 
----
-
-# Decisao Analitica
-
-Decisao adotada:
-
-- Nenhum valor foi imputado
-- Nenhum dado foi estimado artificialmente
-- Nenhum registro foi reconstruido sem evidencia
-- A limitacao foi documentada
-- O periodo posterior a 22/08/2025 deve ser interpretado com cautela
-
-Essa decisao preserva a integridade analitica e evita vieses artificiais.
+Decisao: nenhum valor foi imputado, estimado ou reconstruido artificialmente.
 
 ---
 
-# Tecnologias Utilizadas
+# Recomendacoes de Negocio
 
-- Python
-- Pandas
-- Power BI
-- DAX
-- Git
-- GitHub
-- CSV
-- Markdown
+As oportunidades mais claras estao em aumentar ticket, revisar promocoes, proteger a categoria Milkshake, explorar CRM e ajustar operacao por horario.
 
-O projeto combina tratamento de dados, modelagem, BI e documentacao tecnica.
+Recomendacoes:
 
----
-
-# Entregas do Projeto
-
-- Analise exploratoria dos dados
-- Regras de tratamento e governanca
-- Dataset tratado
-- Auditoria dos registros removidos
-- Modelagem dimensional
-- Dashboard executivo
-- Dashboard operacional
-- Documentacao tecnica
-- Investigacao da anomalia da fonte
+- revisar promocoes: ticket com promocao de **R$ 25,55** contra **R$ 30,80** sem promocao
+- trocar desconto amplo por combos, beneficios progressivos e ofertas condicionadas a quantidade minima
+- tratar Milkshake como categoria ancora, pois responde por **25,9%** da receita
+- usar o intervalo mediano de **20 dias** entre compras para campanhas de CRM
+- diferenciar operacao por horario: tarde como janela de volume e noite como janela de valor
+- fortalecer gestao omnicanal, ja que os canais apresentam participacao equilibrada
 
 ---
 
-# Proximos Passos
+# Conclusao
 
-Evolucoes possiveis:
+O projeto transformou uma base transacional em um ativo analitico confiavel para tomada de decisao.
 
-- Carregar dados em banco SQL
-- Automatizar atualizacao da base
-- Criar monitoramento de qualidade dos dados
-- Evoluir KPIs de performance
-- Adicionar alertas para quedas anormais de registros
-- Criar analises preditivas de demanda
+Resultados do case:
 
----
-
-# Encerramento
-
-Principais aprendizados:
-
-- ETL com rastreabilidade
-- Qualidade e governanca de dados
-- Modelagem dimensional
-- Construcao de dashboard Power BI
-- Storytelling executivo
-- Investigacao analitica de anomalias
-- Documentacao para manutencao e portfolio
+- fonte bruta preservada
+- transformacoes rastreaveis
+- base final pronta para analises, KPIs e Power BI
+- modelo dimensional organizado
+- dashboards separados entre leitura executiva e operacional
+- anomalia pos-22/08/2025 investigada na origem
+- recomendacoes de negocio baseadas em evidencias documentadas
 
 ---
 
