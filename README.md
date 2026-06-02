@@ -4,6 +4,8 @@ Case completo de BI com 50.000 registros, tratamento com Python, modelagem para 
 
 > Status: projeto finalizado, com base tratada, KPIs documentados, modelo dimensional, dashboard Power BI, apresentacao do case e documentacao tecnica.
 
+O registro formal da versao final esta disponivel em [`CHANGELOG.md`](CHANGELOG.md).
+
 ## Prévia do Dashboard
 
 Os screenshots reais do dashboard Power BI serao adicionados futuramente, assim que as capturas finais estiverem disponiveis no repositorio.
