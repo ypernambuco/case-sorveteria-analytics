@@ -135,6 +135,8 @@ Relacionamentos:
 
 Pagina voltada para leitura rapida da saude do negocio.
 
+![Dashboard Executivo](assets/dashboard_executivo.png)
+
 Elementos principais:
 
 - filtros superiores: mes, canal de venda e tipo de sorvete
@@ -150,6 +152,8 @@ A pagina prioriza leitura executiva, clareza e poucos elementos visuais.
 
 Pagina voltada para rotina de operacao, demanda e sazonalidade.
 
+![Dashboard Operacional](assets/dashboard_operacional.png)
+
 Visuais finais:
 
 - Vendas por Faixa Horaria
@@ -164,6 +168,8 @@ O objetivo e responder perguntas operacionais sem repetir a mesma historia da vi
 ---
 
 # Principais Descobertas
+
+![Top Produtos](assets/top_produtos.png)
 
 - Receita total: **R$ 1.366.105,34**
 - Vendas validas: **48.491**
@@ -184,6 +190,8 @@ Insights documentados:
 # Investigacao da Anomalia pos-22/08/2025
 
 Durante a validacao do dashboard, foi identificada queda brusca de registros apos **22/08/2025**.
+
+![Receita ao Longo do Tempo](assets/receita_temporal.png)
 
 Evidencias:
 
