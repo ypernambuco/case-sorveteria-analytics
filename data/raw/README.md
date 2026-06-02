@@ -8,6 +8,6 @@ Arquivos originais recebidos para o case.
 
 ## Cuidados
 
-- Nao editar manualmente.
-- Nao sobrescrever.
+- Não editar manualmente.
+- Não sobrescrever.
 - Usar apenas como fonte de leitura.

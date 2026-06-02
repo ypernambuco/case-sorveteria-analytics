@@ -19,11 +19,11 @@ assets/
 
 ### `branding/`
 
-Identidade visual do projeto, incluindo logos, paleta de cores, tipografia e diretrizes visuais utilizadas nos dashboards, apresentacoes e materiais executivos.
+Identidade visual do projeto, incluindo logos, paleta de cores, tipografia e diretrizes visuais utilizadas nos dashboards, apresentações e materiais executivos.
 
 ### `icons/`
 
-Icones utilizados em dashboards, apresentacoes e documentacao visual.
+Ícones utilizados em dashboards, apresentações e documentação visual.
 
 ### `images/`
 
@@ -31,8 +31,8 @@ Imagens de apoio utilizadas no storytelling, dashboards ou materiais executivos.
 
 ### `mockups/`
 
-Wireframes, referencias visuais e prototipos de telas ou dashboards.
+Wireframes, referências visuais e protótipos de telas ou dashboards.
 
 ## Objetivo
 
-Centralizar os elementos visuais para manter consistencia entre dashboard, storytelling e apresentacao executiva.
+Centralizar os elementos visuais para manter consistência entre dashboard, storytelling e apresentação executiva.

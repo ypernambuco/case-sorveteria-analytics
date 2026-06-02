@@ -1,11 +1,11 @@
 # Scripts
 
-Pasta para rotinas reutilizaveis do projeto.
+Pasta para rotinas reutilizáveis do projeto.
 
 Exemplos futuros:
 
-- ingestao dos dados;
-- limpeza e padronizacao;
-- validacao de qualidade;
-- geracao de tabelas analiticas;
-- exportacao para Power BI.
+- ingestão dos dados;
+- limpeza e padronização;
+- validação de qualidade;
+- geração de tabelas analíticas;
+- exportação para Power BI.

@@ -15,47 +15,47 @@ theme: default
 
 ---
 
-# Contexto do Negocio
+# Contexto do Negócio
 
-A sorveteria precisava transformar uma base transacional em informacao gerencial para apoiar decisoes de crescimento.
+A sorveteria precisava transformar uma base transacional em informação gerencial para apoiar decisões de crescimento.
 
 Pergunta central:
 
 **Como aumentar receita a partir do comportamento de vendas de 2025?**
 
-Dimensoes analisadas:
+Dimensões analisadas:
 
 - produtos e mix de vendas
 - canais comerciais
-- sazonalidade e horarios
+- sazonalidade e horários
 - comportamento de clientes
-- limitacoes da fonte de dados
+- limitações da fonte de dados
 
 ---
 
-# Objetivo da Analise
+# Objetivo da Análise
 
-Criar uma base confiavel e indicadores executivos para entender desempenho comercial, eficiencia operacional e oportunidades de crescimento.
+Criar uma base confiável e indicadores executivos para entender desempenho comercial, eficiência operacional e oportunidades de crescimento.
 
-Entregas analiticas:
+Entregas analíticas:
 
 - entender a qualidade dos dados
-- preparar uma base confiavel
+- preparar uma base confiável
 - criar KPIs executivos
 - modelar dados para Power BI
 - construir dashboards executivo e operacional
-- documentar descobertas, decisoes e limitacoes
+- documentar descobertas, decisões e limitações
 
 ---
 
 # Dataset
 
 - Base bruta: **50.000 registros**
-- Base tratada: **48.491 registros validos**
+- Base tratada: **48.491 registros válidos**
 - Registros removidos: **1.509**
 - Taxa de aproveitamento: **96,98%**
-- Periodo da base: **20/02/2025 a 20/09/2025**
-- Granularidade: **uma linha por transacao de venda**
+- Período da base: **20/02/2025 a 20/09/2025**
+- Granularidade: **uma linha por transação de venda**
 
 Fonte bruta: `data/raw/vendas_sorvetes.csv`  
 Base tratada: `data/processed/vendas_sorvetes_tratado.csv`
@@ -64,13 +64,13 @@ Base tratada: `data/processed/vendas_sorvetes_tratado.csv`
 
 # Problemas Encontrados Nos Dados
 
-A base original tinha problemas que poderiam distorcer receita, volume, ticket medio, filtros e leitura operacional.
+A base original tinha problemas que poderiam distorcer receita, volume, ticket médio, filtros e leitura operacional.
 
 Principais pontos tratados:
 
 - nulos em campos como `sabor`, `cidade` e `Valor_Total`
-- valores monetarios nao positivos
-- quantidade vendida nao positiva
+- valores monetarios não positivos
+- quantidade vendida não positiva
 - inconsistencias textuais e espacos extras
 - nomes de colunas pouco adequados para Power BI e DAX
 - outliers financeiros que exigiam rastreabilidade
@@ -85,23 +85,23 @@ O tratamento preservou a fonte original e separou as camadas de trabalho.
 Raw -> Interim -> Processed -> Power BI
 ```
 
-Decisoes aplicadas:
+Decisões aplicadas:
 
-- arquivos em `data/raw` mantidos como fonte imutavel
+- arquivos em `data/raw` mantidos como fonte imutável
 - registros removidos preservados em `data/interim`
 - nulos em `sabor` e `cidade` preenchidos como `Nao Informado`
 - flags criadas para manter rastreabilidade
-- valores e quantidades nao positivos removidos da base processada
+- valores e quantidades não positivos removidos da base processada
 
 ---
 
-# Qualidade dos Dados Apos Tratamento
+# Qualidade dos Dados Após Tratamento
 
-A base processada ficou consistente e pronta para analises, KPIs e Power BI.
+A base processada ficou consistente e pronta para análises, KPIs e Power BI.
 
 Resultados finais:
 
-- **48.491 registros validos** mantidos
+- **48.491 registros válidos** mantidos
 - **31 colunas** na base processada
 - **0 nulos finais**
 - **0 duplicidades em `id_transacao`**
@@ -125,24 +125,24 @@ Modelo recomendado:
 
 Relacionamentos:
 
-- dimensoes em relacao **1 para muitos** com `fato_vendas`
+- dimensões em relacao **1 para muitos** com `fato_vendas`
 - direcao de filtro simples
-- sem muitos-para-muitos nesta versao
+- sem muitos-para-muitos nesta versão
 
 ---
 
 # Dashboard Executivo
 
-Pagina voltada para leitura rapida da saude do negocio.
+Pagina voltada para leitura rápida da saúde do negócio.
 
 ![Dashboard Executivo](assets/dashboard_executivo.png)
 
 Elementos principais:
 
-- filtros superiores: mes, canal de venda e tipo de sorvete
-- KPIs: Receita Total, Total de Vendas, Ticket Medio, Clientes Unicos e Volume Vendido
-- visual principal: **Evolucao da Receita**
-- graficos de apoio: Receita por Canal, Receita por Tipo de Sorvete e Vendas por Dia da Semana
+- filtros superiores: mês, canal de venda e tipo de sorvete
+- KPIs: Receita Total, Total de Vendas, Ticket Médio, Clientes Únicos e Volume Vendido
+- visual principal: **Evolução da Receita**
+- gráficos de apoio: Receita por Canal, Receita por Tipo de Sorvete e Vendas por Dia da Semana
 
 A pagina prioriza leitura executiva, clareza e poucos elementos visuais.
 
@@ -150,20 +150,20 @@ A pagina prioriza leitura executiva, clareza e poucos elementos visuais.
 
 # Dashboard Operacional
 
-Pagina voltada para rotina de operacao, demanda e sazonalidade.
+Pagina voltada para rotina de operação, demanda e sazonalidade.
 
 ![Dashboard Operacional](assets/dashboard_operacional.png)
 
 Visuais finais:
 
-- Vendas por Faixa Horaria
-- Receita por Faixa Horaria
+- Vendas por Faixa Horária
+- Receita por Faixa Horária
 - Receita por Trimestre
 - Volume por Tipo de Sorvete
 - Receita por Dia da Semana
-- Evolucao do Volume Vendido
+- Evolução do Volume Vendido
 
-O objetivo e responder perguntas operacionais sem repetir a mesma historia da visao executiva.
+O objetivo e responder perguntas operacionais sem repetir a mesma história da visão executiva.
 
 ---
 
@@ -172,24 +172,24 @@ O objetivo e responder perguntas operacionais sem repetir a mesma historia da vi
 ![Top Produtos](assets/top_produtos.png)
 
 - Receita total: **R$ 1.366.105,34**
-- Vendas validas: **48.491**
+- Vendas válidas: **48.491**
 - Volume vendido: **149.400 unidades**
-- Ticket medio: **R$ 28,17**
-- Clientes unicos: **8.970**
+- Ticket médio: **R$ 28,17**
+- Clientes únicos: **8.970**
 
 Insights documentados:
 
 - Milkshake lidera com **25,9%** da receita
-- canais Parceiro, App e Loja Fisica ficam equilibrados em torno de um terco da receita
+- canais Parceiro, App e Loja Física ficam equilibrados em torno de um terço da receita
 - clientes recorrentes representam **97,6%** da base analisada
 - Tarde concentra **39,9%** das vendas
-- promocoes representam **50,1%** das vendas, mas apenas **45,4%** da receita
+- promoções representam **50,1%** das vendas, mas apenas **45,4%** da receita
 
 ---
 
-# Investigacao da Anomalia pos-22/08/2025
+# Investigação da Anomalia pos-22/08/2025
 
-Durante a validacao do dashboard, foi identificada queda brusca de registros apos **22/08/2025**.
+Durante a validação do dashboard, foi identificada queda brusca de registros após **22/08/2025**.
 
 ![Receita ao Longo do Tempo](assets/receita_temporal.png)
 
@@ -198,42 +198,42 @@ Evidencias:
 - Bruto: **251 registros em 21/08/2025** e **26 em 22/08/2025**
 - Tratado: **243 registros em 21/08/2025** e **25 em 22/08/2025**
 
-Conclusao:
+Conclusão:
 
-A anomalia ja existia na fonte original e nao foi causada por limpeza, transformacao, modelagem ou dashboard.
+A anomalia já existia na fonte original e não foi causada por limpeza, transformação, modelagem ou dashboard.
 
-Decisao: nenhum valor foi imputado, estimado ou reconstruido artificialmente.
+Decisão: nenhum valor foi imputado, estimado ou reconstruído artificialmente.
 
 ---
 
-# Recomendacoes de Negocio
+# Recomendacoes de Negócio
 
-As oportunidades mais claras estao em aumentar ticket, revisar promocoes, proteger a categoria Milkshake, explorar CRM e ajustar operacao por horario.
+As oportunidades mais claras estão em aumentar ticket, revisar promoções, proteger a categoria Milkshake, explorar CRM e ajustar operação por horário.
 
 Recomendacoes:
 
-- revisar promocoes: ticket com promocao de **R$ 25,55** contra **R$ 30,80** sem promocao
-- trocar desconto amplo por combos, beneficios progressivos e ofertas condicionadas a quantidade minima
-- tratar Milkshake como categoria ancora, pois responde por **25,9%** da receita
+- revisar promoções: ticket com promoção de **R$ 25,55** contra **R$ 30,80** sem promoção
+- trocar desconto amplo por combos, benefícios progressivos e ofertas condicionadas a quantidade minima
+- tratar Milkshake como categoria âncora, pois responde por **25,9%** da receita
 - usar o intervalo mediano de **20 dias** entre compras para campanhas de CRM
-- diferenciar operacao por horario: tarde como janela de volume e noite como janela de valor
-- fortalecer gestao omnicanal, ja que os canais apresentam participacao equilibrada
+- diferenciar operação por horário: tarde como janela de volume e noite como janela de valor
+- fortalecer gestão omnicanal, já que os canais apresentam participação equilibrada
 
 ---
 
-# Conclusao
+# Conclusão
 
-O projeto transformou uma base transacional em um ativo analitico confiavel para tomada de decisao.
+O projeto transformou uma base transacional em um ativo analítico confiável para tomada de decisão.
 
 Resultados do case:
 
 - fonte bruta preservada
-- transformacoes rastreaveis
-- base final pronta para analises, KPIs e Power BI
+- transformações rastreaveis
+- base final pronta para análises, KPIs e Power BI
 - modelo dimensional organizado
 - dashboards separados entre leitura executiva e operacional
 - anomalia pos-22/08/2025 investigada na origem
-- recomendacoes de negocio baseadas em evidencias documentadas
+- recomendações de negócio baseadas em evidências documentadas
 
 ---
 
@@ -241,4 +241,4 @@ Resultados do case:
 
 ## Case Sorveteria Analytics
 
-Projeto de Analytics e Business Intelligence para portfolio.
+Projeto de Analytics e Business Intelligence para portfólio.

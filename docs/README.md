@@ -1,24 +1,24 @@
-# Documentacao
+# Documentação
 
-Pasta para briefing, premissas, regras de negocio, dicionario de dados e materiais de referencia.
+Pasta para briefing, premissas, regras de negócio, dicionário de dados e materiais de referência.
 
-Os materiais da apresentacao executiva foram centralizados em `presentation/`.
+Os materiais da apresentação executiva foram centralizados em `presentation/`.
 
 ## Arquivos
 
-- `case_sorveteria.pptx`: documento de referencia do case.
+- `case_sorveteria.pptx`: documento de referência do case.
 - `PROJECT_BRIEF.md`: contexto e escopo inicial do projeto.
-- `dicionario_dados_inicial.md`: dicionario preliminar criado a partir da exploracao inicial.
-- `dicionario_dados_processado.md`: dicionario da base final tratada para Power BI e KPIs.
-- `dashboard_powerbi.md`: registro do dashboard Power BI final, incluindo paginas, visuais, metricas, layout, cores, ajustes manuais feitos no Power BI e limitacao identificada na base apos 22/08/2025.
-- `regras_tratamento.md`: regras aplicadas na limpeza, validacao e preparacao da base analitica.
-- `revisao_nomenclatura_colunas.md`: analise critica dos nomes das colunas da base processada para Power BI e DAX.
+- `dicionario_dados_inicial.md`: dicionário preliminar criado a partir da exploração inicial.
+- `dicionario_dados_processado.md`: dicionário da base final tratada para Power BI e KPIs.
+- `dashboard_powerbi.md`: registro do dashboard Power BI final, incluindo páginas, visuais, métricas, layout, cores, ajustes manuais feitos no Power BI e limitação identificada na base após 22/08/2025.
+- `regras_tratamento.md`: regras aplicadas na limpeza, validação e preparação da base analítica.
+- `revisao_nomenclatura_colunas.md`: análise crítica dos nomes das colunas da base processada para Power BI e DAX.
 
-## Exportacao em PDF
+## Exportação em PDF
 
-A apresentacao `presentation/apresentacao_case_sorveteria.md` ja esta preparada para exportacao via Marp, com front matter habilitado e slides separados por `---`.
+A apresentação `presentation/apresentacao_case_sorveteria.md` já está preparada para exportação via Marp, com front matter habilitado e slides separados por `---`.
 
-Para gerar a versao em PDF localmente, use:
+Para gerar a versão em PDF localmente, use:
 
 ```powershell
 npx @marp-team/marp-cli presentation/apresentacao_case_sorveteria.md --pdf -o presentation/apresentacao_case_sorveteria.pdf

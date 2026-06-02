@@ -1,6 +1,6 @@
-# Dados Intermediarios
+# Dados Intermediários
 
-Pasta destinada a arquivos temporarios ou parciais gerados durante limpeza, padronizacao e validacao.
+Pasta destinada a arquivos temporários ou parciais gerados durante limpeza, padronização e validação.
 
 Exemplos futuros:
 

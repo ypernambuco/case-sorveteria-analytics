@@ -1,9 +1,9 @@
-# Exportacoes
+# Exportações
 
-Pasta para artefatos gerados a partir das analises.
+Pasta para artefatos gerados a partir das análises.
 
 ## Subpastas
 
-- `figures`: graficos e imagens.
+- `figures`: gráficos e imagens.
 - `tables`: tabelas finais.
-- `powerbi`: exportacoes relacionadas ao dashboard.
+- `powerbi`: exportações relacionadas ao dashboard.

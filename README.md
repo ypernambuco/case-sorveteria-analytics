@@ -1,38 +1,38 @@
 # Case Sorveteria Analytics
 
-Case completo de BI com 50.000 registros, tratamento com Python, modelagem para Power BI, dashboard executivo/operacional e investigacao de anomalia real na fonte de dados.
+Case completo de BI com 50.000 registros, tratamento com Python, modelagem para Power BI, dashboard executivo/operacional e investigação de anomalia real na fonte de dados.
 
-> Status: projeto finalizado, com base tratada, KPIs documentados, modelo dimensional, dashboard Power BI, apresentacao do case e documentacao tecnica.
+> Status: projeto finalizado, com base tratada, KPIs documentados, modelo dimensional, dashboard Power BI, apresentação do case e documentação técnica.
 
-O registro formal da versao final esta disponivel em [`CHANGELOG.md`](CHANGELOG.md).
+O registro formal da versão final está disponível em [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Prévia do Dashboard
 
-As capturas reais do dashboard Power BI estao disponiveis em `presentation/assets/` e foram integradas aos materiais da apresentacao.
+As capturas reais do dashboard Power BI estão disponíveis em `presentation/assets/` e foram integradas aos materiais da apresentação.
 
 ![Dashboard Executivo](presentation/assets/dashboard_executivo.png)
 
-*Visao executiva do dashboard, com KPIs principais, evolucao da receita e analises de apoio por canal, produto e dia da semana.*
+*Visão executiva do dashboard, com KPIs principais, evolução da receita e análises de apoio por canal, produto e dia da semana.*
 
 ![Dashboard Operacional](presentation/assets/dashboard_operacional.png)
 
-*Visao operacional do dashboard, com foco em demanda, faixa horaria, volume, trimestre e comportamento semanal.*
+*Visão operacional do dashboard, com foco em demanda, faixa horária, volume, trimestre e comportamento semanal.*
 
 ## Objetivo
 
 Organizar uma base de vendas de sorvetes para apoiar uma jornada completa de analytics:
 
-- entendimento do problema de negocio;
-- analise exploratoria dos dados;
-- tratamento e validacao da base;
-- construcao de indicadores de desempenho;
+- entendimento do problema de negócio;
+- análise exploratória dos dados;
+- tratamento e validação da base;
+- construção de indicadores de desempenho;
 - modelagem dimensional para Power BI;
 - desenvolvimento de dashboards executivo e operacional;
-- documentacao das descobertas, decisoes tecnicas e limitacoes dos dados.
+- documentação das descobertas, decisões técnicas e limitações dos dados.
 
-## Pergunta De Negocio
+## Pergunta De Negócio
 
-Como a sorveteria pode aumentar receita a partir do comportamento de vendas de 2025, considerando produtos, sazonalidade, canais, regioes, mix de vendas e oportunidades operacionais?
+Como a sorveteria pode aumentar receita a partir do comportamento de vendas de 2025, considerando produtos, sazonalidade, canais, regiões, mix de vendas e oportunidades operacionais?
 
 ## Estrutura Do Projeto
 
@@ -59,18 +59,18 @@ case-sorveteria-analytics/
 `-- README.md
 ```
 
-## Descricao Das Pastas
+## Descrição Das Pastas
 
-- `data/raw`: dados originais, sem alteracao. Arquivos desta pasta devem ser tratados como fonte imutavel.
-- `data/interim`: dados intermediarios gerados durante limpeza, padronizacao e validacao.
-- `data/processed`: bases finais tratadas, prontas para analise, KPIs e Power BI.
-- `notebooks`: exploracao, investigacao de qualidade dos dados e prototipos analiticos.
-- `scripts`: rotinas reutilizaveis para ingestao, limpeza, transformacao e validacao.
-- `powerbi`: arquivo final do dashboard Power BI, apoio do modelo semantico, medidas DAX e documentacao visual.
-- `presentation`: materiais da apresentacao executiva e storytelling final.
-- `docs`: briefing, premissas, dicionario de dados, regras de negocio e documentos de referencia.
-- `exports`: tabelas, graficos e artefatos finais exportados.
-- `assets`: imagens, logos, icones e recursos visuais.
+- `data/raw`: dados originais, sem alteração. Arquivos desta pasta devem ser tratados como fonte imutável.
+- `data/interim`: dados intermediários gerados durante limpeza, padronização e validação.
+- `data/processed`: bases finais tratadas, prontas para análise, KPIs e Power BI.
+- `notebooks`: exploração, investigação de qualidade dos dados e protótipos analíticos.
+- `scripts`: rotinas reutilizáveis para ingestão, limpeza, transformação e validação.
+- `powerbi`: arquivo final do dashboard Power BI, apoio do modelo semântico, medidas DAX e documentação visual.
+- `presentation`: materiais da apresentação executiva e storytelling final.
+- `docs`: briefing, premissas, dicionário de dados, regras de negócio e documentos de referência.
+- `exports`: tabelas, gráficos e artefatos finais exportados.
+- `assets`: imagens, logos, ícones e recursos visuais.
 
 ## Dados De Entrada
 
@@ -78,36 +78,36 @@ Arquivo principal:
 
 - `data/raw/vendas_sorvetes.csv`
 
-Documento de referencia:
+Documento de referência:
 
 - `docs/case_sorveteria.pptx`
 
-Os arquivos originais nao devem ser alterados. Qualquer transformacao deve gerar novos arquivos em `data/interim` ou `data/processed`.
+Os arquivos originais não devem ser alterados. Qualquer transformação deve gerar novos arquivos em `data/interim` ou `data/processed`.
 
-## Base Analitica Atual
+## Base Analítica Atual
 
-Arquivo principal para analises e Power BI:
+Arquivo principal para análises e Power BI:
 
 - `data/processed/vendas_sorvetes_tratado.csv`
 
 Resumo da camada processada:
 
-- 48.491 registros validos;
+- 48.491 registros válidos;
 - 31 colunas;
 - 0 nulos finais;
 - 0 duplicidades em `id_transacao`;
 - `mes` e `hora` mantidos como nomes aprovados;
-- principais campos de metricas: `receita_transacao`, `quantidade_vendida`, `valor_transacao` e `valor_unitario_medio`.
+- principais campos de métricas: `receita_transacao`, `quantidade_vendida`, `valor_transacao` e `valor_unitario_medio`.
 
 ## Dashboard Power BI
 
-O dashboard Power BI final foi ajustado manualmente no Power BI e esta organizado em duas paginas: `Visao Executiva` e `Visao Operacional`. A documentacao dos visuais, metricas, decisoes de layout, cores e alteracoes manuais esta em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md).
+O dashboard Power BI final foi ajustado manualmente no Power BI e está organizado em duas páginas: `Visao Executiva` e `Visao Operacional`. A documentação dos visuais, métricas, decisões de layout, cores e alterações manuais está em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md).
 
-Durante a validacao foi identificada uma reducao abrupta de registros a partir de 22/08/2025. A investigacao confirmou que a queda ja existia no dataset bruto original e nao foi causada por limpeza, transformacao, modelagem ou construcao do dashboard. Por isso, nenhum valor foi imputado artificialmente; a limitacao e seu impacto nos indicadores temporais estao documentados em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md#limitacao-identificada-na-base-de-dados).
+Durante a validação foi identificada uma redução abrupta de registros a partir de 22/08/2025. A investigação confirmou que a queda já existia no dataset bruto original e não foi causada por limpeza, transformação, modelagem ou construção do dashboard. Por isso, nenhum valor foi imputado artificialmente; a limitação e seu impacto nos indicadores temporais estão documentados em [`docs/dashboard_powerbi.md`](docs/dashboard_powerbi.md#limitacao-identificada-na-base-de-dados).
 
-## Apresentacao Do Case
+## Apresentação Do Case
 
-Os materiais da apresentacao executiva estao centralizados em `presentation/`, incluindo a estrutura narrativa, recomendacoes de negocio, capturas reais do dashboard e a versao Markdown/Marp do case em [`presentation/apresentacao_case_sorveteria.md`](presentation/apresentacao_case_sorveteria.md).
+Os materiais da apresentação executiva estão centralizados em `presentation/`, incluindo a estrutura narrativa, recomendações de negócio, capturas reais do dashboard e a versão Markdown/Marp do case em [`presentation/apresentacao_case_sorveteria.md`](presentation/apresentacao_case_sorveteria.md).
 
 ## Ambiente
 
@@ -119,7 +119,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Neste workspace, a `.venv` ja foi criada e as bibliotecas principais foram instaladas.
+Neste workspace, a `.venv` já foi criada e as bibliotecas principais foram instaladas.
 
 Bibliotecas iniciais:
 
@@ -132,46 +132,46 @@ Bibliotecas iniciais:
 ## Fluxo De Trabalho Executado
 
 1. Registro de premissas e contexto do case em `docs/`.
-2. Exploracao inicial da base bruta em `notebooks/`.
-3. Avaliacao de estrutura, tipos de dados, nulos, duplicidades e consistencia.
+2. Exploração inicial da base bruta em `notebooks/`.
+3. Avaliação de estrutura, tipos de dados, nulos, duplicidades e consistência.
 4. Tratamento e auditoria de registros em `data/interim`.
-5. Geracao da base tratada em `data/processed`.
-6. Criacao da camada dimensional em `data/powerbi`.
-7. Definicao e documentacao dos KPIs executivos.
-8. Construcao do dashboard Power BI com visao executiva e operacional.
-9. Investigacao e documentacao da anomalia de registros apos 22/08/2025.
-10. Criacao da apresentacao do case para portfolio e entrevistas.
+5. Geração da base tratada em `data/processed`.
+6. Criação da camada dimensional em `data/powerbi`.
+7. Definição e documentação dos KPIs executivos.
+8. Construção do dashboard Power BI com visão executiva e operacional.
+9. Investigação e documentação da anomalia de registros após 22/08/2025.
+10. Criação da apresentação do case para portfólio e entrevistas.
 
 ## KPIs Entregues
 
-Os principais indicadores entregues no dashboard e na documentacao sao:
+Os principais indicadores entregues no dashboard e na documentação são:
 
 - receita total;
 - total de vendas;
-- ticket medio;
-- clientes unicos;
+- ticket médio;
+- clientes únicos;
 - volume vendido;
 - receita por canal;
 - receita por tipo de sorvete;
 - vendas por dia da semana;
-- receita por faixa horaria;
+- receita por faixa horária;
 - receita por trimestre;
-- evolucao do volume vendido.
+- evolução do volume vendido.
 
-## Regras De Governanca
+## Regras De Governança
 
-- Nao editar arquivos em `data/raw`.
-- Documentar premissas antes de aplicar transformacoes relevantes.
-- Separar dados brutos, intermediarios e processados.
+- Não editar arquivos em `data/raw`.
+- Documentar premissas antes de aplicar transformações relevantes.
+- Separar dados brutos, intermediários e processados.
 - Manter notebooks numerados por etapa.
-- Transformacoes recorrentes devem migrar de notebooks para `scripts`.
-- Exportacoes finais devem ficar em `exports`.
+- Transformações recorrentes devem migrar de notebooks para `scripts`.
+- Exportações finais devem ficar em `exports`.
 
-## Evolucoes Futuras
+## Evoluções Futuras
 
 - Carregar a base tratada em um banco SQL.
-- Automatizar o pipeline de atualizacao.
+- Automatizar o pipeline de atualização.
 - Criar testes automatizados de qualidade dos dados.
-- Publicar o relatorio no Power BI Service.
+- Publicar o relatório no Power BI Service.
 - Adicionar alertas para anomalias de volume de registros.
-- Evoluir analises preditivas de demanda.
+- Evoluir análises preditivas de demanda.

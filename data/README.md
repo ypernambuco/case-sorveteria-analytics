@@ -16,17 +16,17 @@ data/
 ### `raw/`
 
 Dados originais recebidos da fonte.
-Os arquivos desta camada devem permanecer imutaveis e servir como referencia primaria do projeto.
+Os arquivos desta camada devem permanecer imutaveis e servir como referência primaria do projeto.
 
 ### `interim/`
 
-Dados intermediarios gerados durante etapas de limpeza, padronizacao, enriquecimento, transformacao e validacao.
+Dados intermediários gerados durante etapas de limpeza, padronização, enriquecimento, transformação e validação.
 
 ### `processed/`
 
-Bases finais consolidadas e preparadas para analises, KPIs, dashboards e consumo no Power BI.
+Bases finais consolidadas e preparadas para análises, KPIs, dashboards e consumo no Power BI.
 
 ## Regra Principal
 
-Arquivos armazenados em `raw` nao devem ser editados diretamente.
-Toda transformacao deve gerar novos arquivos nas camadas `interim` ou `processed`, garantindo rastreabilidade, reproducibilidade e governanca dos dados.
+Arquivos armazenados em `raw` não devem ser editados diretamente.
+Toda transformação deve gerar novos arquivos nas camadas `interim` ou `processed`, garantindo rastreabilidade, reproducibilidade e governança dos dados.
