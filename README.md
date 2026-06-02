@@ -4,6 +4,10 @@ Case completo de BI com 50.000 registros, tratamento com Python, modelagem para 
 
 > Status: projeto finalizado, com base tratada, KPIs documentados, modelo dimensional, dashboard Power BI, apresentacao do case e documentacao tecnica.
 
+## Prévia do Dashboard
+
+Os screenshots reais do dashboard Power BI serao adicionados futuramente, assim que as capturas finais estiverem disponiveis no repositorio.
+
 ## Objetivo
 
 Organizar uma base de vendas de sorvetes para apoiar uma jornada completa de analytics:
