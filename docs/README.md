@@ -12,3 +12,13 @@ Pasta para briefing, premissas, regras de negocio, dicionario de dados e materia
 - `dashboard_powerbi.md`: registro do dashboard Power BI final, incluindo paginas, visuais, metricas, layout, cores, ajustes manuais feitos no Power BI e limitacao identificada na base apos 22/08/2025.
 - `regras_tratamento.md`: regras aplicadas na limpeza, validacao e preparacao da base analitica.
 - `revisao_nomenclatura_colunas.md`: analise critica dos nomes das colunas da base processada para Power BI e DAX.
+
+## Exportacao em PDF
+
+A apresentacao `apresentacao_case_sorveteria.md` ja esta preparada para exportacao via Marp, com front matter habilitado e slides separados por `---`.
+
+Para gerar a versao em PDF localmente, use:
+
+```powershell
+npx @marp-team/marp-cli docs/apresentacao_case_sorveteria.md --pdf -o docs/apresentacao_case_sorveteria.pdf
+```
