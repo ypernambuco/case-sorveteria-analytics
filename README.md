@@ -46,6 +46,7 @@ case-sorveteria-analytics/
 |-- scripts/
 |-- .gitignore
 |-- requirements.txt
+|-- CHANGELOG.md
 `-- README.md
 ```
 
@@ -97,7 +98,7 @@ Durante a validacao foi identificada uma reducao abrupta de registros a partir d
 
 ## Apresentacao Do Case
 
-A apresentacao em formato Markdown/Marp para portfolio e entrevistas esta disponivel em [`docs/apresentacao_case_sorveteria.md`](docs/apresentacao_case_sorveteria.md).
+Os materiais da apresentacao executiva estao centralizados em `presentation/`, incluindo a estrutura narrativa e a versao Markdown/Marp do case.
 
 ## Ambiente
 

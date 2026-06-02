@@ -2,10 +2,11 @@
 
 Pasta para briefing, premissas, regras de negocio, dicionario de dados e materiais de referencia.
 
+Os materiais da apresentacao executiva foram centralizados em `presentation/`.
+
 ## Arquivos
 
 - `case_sorveteria.pptx`: documento de referencia do case.
-- `apresentacao_case_sorveteria.md`: apresentacao em Markdown/Marp para portfolio e entrevistas de BI/Analytics.
 - `PROJECT_BRIEF.md`: contexto e escopo inicial do projeto.
 - `dicionario_dados_inicial.md`: dicionario preliminar criado a partir da exploracao inicial.
 - `dicionario_dados_processado.md`: dicionario da base final tratada para Power BI e KPIs.
@@ -15,10 +16,10 @@ Pasta para briefing, premissas, regras de negocio, dicionario de dados e materia
 
 ## Exportacao em PDF
 
-A apresentacao `apresentacao_case_sorveteria.md` ja esta preparada para exportacao via Marp, com front matter habilitado e slides separados por `---`.
+A apresentacao `presentation/apresentacao_case_sorveteria.md` ja esta preparada para exportacao via Marp, com front matter habilitado e slides separados por `---`.
 
 Para gerar a versao em PDF localmente, use:
 
 ```powershell
-npx @marp-team/marp-cli docs/apresentacao_case_sorveteria.md --pdf -o docs/apresentacao_case_sorveteria.pdf
+npx @marp-team/marp-cli presentation/apresentacao_case_sorveteria.md --pdf -o presentation/apresentacao_case_sorveteria.pdf
 ```
