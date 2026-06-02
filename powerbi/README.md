@@ -4,7 +4,7 @@ Pasta de apoio do dashboard Power BI do projeto `case-sorveteria-analytics`.
 
 ## Arquivo Principal
 
-- [`../dashboard_sorveteria.pbix`](../dashboard_sorveteria.pbix): arquivo final do dashboard Power BI, ajustado manualmente no Power BI Desktop.
+- [`dashboard_sorveteria.pbix`](dashboard_sorveteria.pbix): arquivo final do dashboard Power BI, ajustado manualmente no Power BI Desktop.
 
 ## Documentacao
 

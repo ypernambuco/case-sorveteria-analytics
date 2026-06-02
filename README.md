@@ -50,6 +50,7 @@ case-sorveteria-analytics/
 |   `-- powerbi/
 |-- notebooks/
 |-- powerbi/
+|   `-- dashboard_sorveteria.pbix
 |-- presentation/
 |-- scripts/
 |-- .gitignore
@@ -65,7 +66,7 @@ case-sorveteria-analytics/
 - `data/processed`: bases finais tratadas, prontas para analise, KPIs e Power BI.
 - `notebooks`: exploracao, investigacao de qualidade dos dados e prototipos analiticos.
 - `scripts`: rotinas reutilizaveis para ingestao, limpeza, transformacao e validacao.
-- `powerbi`: arquivos do dashboard, modelo semantico, medidas DAX e documentacao visual.
+- `powerbi`: arquivo final do dashboard Power BI, apoio do modelo semantico, medidas DAX e documentacao visual.
 - `presentation`: materiais da apresentacao executiva e storytelling final.
 - `docs`: briefing, premissas, dicionario de dados, regras de negocio e documentos de referencia.
 - `exports`: tabelas, graficos e artefatos finais exportados.
