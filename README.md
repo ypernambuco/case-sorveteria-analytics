@@ -42,7 +42,8 @@ case-sorveteria-analytics/
 |-- data/
 |   |-- raw/
 |   |-- interim/
-|   `-- processed/
+|   |-- processed/
+|   `-- powerbi/
 |-- docs/
 |-- exports/
 |   |-- figures/
@@ -64,6 +65,7 @@ case-sorveteria-analytics/
 - `data/raw`: dados originais, sem alteração. Arquivos desta pasta devem ser tratados como fonte imutável.
 - `data/interim`: dados intermediários gerados durante limpeza, padronização e validação.
 - `data/processed`: bases finais tratadas, prontas para análise, KPIs e Power BI.
+- `data/powerbi`: modelo dimensional exportado para consumo no Power BI.
 - `notebooks`: exploração, investigação de qualidade dos dados e protótipos analíticos.
 - `scripts`: rotinas reutilizáveis para ingestão, limpeza, transformação e validação.
 - `powerbi`: arquivo final do dashboard Power BI, apoio do modelo semântico, medidas DAX e documentação visual.
@@ -119,9 +121,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Neste workspace, a `.venv` já foi criada e as bibliotecas principais foram instaladas.
-
-Bibliotecas iniciais:
+Principais bibliotecas:
 
 - `pandas`
 - `numpy`
